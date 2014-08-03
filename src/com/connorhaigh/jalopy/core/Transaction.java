@@ -98,9 +98,8 @@ public class Transaction implements Runnable
 	
 	/**
 	 * Handle the transaction between the server and the client.
-	 * @throws IOException if the request could not be completed
 	 */
-	public void handle() throws IOException
+	public void handle()
 	{
 		//create thread
 		Thread thread = new Thread(this);

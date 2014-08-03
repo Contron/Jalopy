@@ -27,6 +27,7 @@ public class GetHandler extends Handler
 	 * @throws HttpException if a HTTP exception occurs
 	 * @throws IOException if an I/O exception occurs
 	 */
+	@Override
 	public void handle() throws HttpException, IOException
 	{
 		try (FileInputStream fileInputStream = new FileInputStream(this.getRequest().getResource()))

@@ -59,7 +59,7 @@ public class Server implements Runnable
 			}
 			catch (IOException ioException)
 			{
-				ioException.printStackTrace();
+				
 			}
 		}
 	}

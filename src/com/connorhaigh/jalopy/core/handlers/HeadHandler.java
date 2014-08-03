@@ -26,6 +26,7 @@ public class HeadHandler extends Handler
 	 * @throws HttpException if a HTTP exception occurs
 	 * @throws IOException if an I/O exception occurs
 	 */
+	@Override
 	public void handle() throws HttpException, IOException
 	{
 		
