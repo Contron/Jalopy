@@ -31,6 +31,7 @@ public class Mapping
 	{
 		try
 		{
+			//create instance
 			Constructor<? extends Handler> constructor = this.handler.getDeclaredConstructor(Server.class, Request.class, DataOutputStream.class);
 			Handler handler = constructor.newInstance(server, request, dataOutputStream);
 			

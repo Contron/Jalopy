@@ -38,6 +38,8 @@ public class MimeTypeManager extends Manager<ArrayList<MimeType>>
 		result.add(new MimeType("js", "application", "javascript"));
 		result.add(new MimeType("xml", "application", "xml"));
 		result.add(new MimeType("zip", "application", "zip"));
+		result.add(new MimeType("jar", "application", "java-archive"));
+		result.add(new MimeType("exe", "application", "octet-stream"));
 		
 		//images
 		result.add(new MimeType("png", "image", "png"));

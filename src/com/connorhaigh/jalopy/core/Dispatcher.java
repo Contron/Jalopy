@@ -7,13 +7,11 @@ import java.io.IOException;
 import com.connorhaigh.jalopy.exceptions.HttpException;
 import com.connorhaigh.jalopy.exceptions.ServerException;
 import com.connorhaigh.jalopy.http.Content;
-import com.connorhaigh.jalopy.http.Http;
 import com.connorhaigh.jalopy.http.Request;
 import com.connorhaigh.jalopy.http.RequestHeader;
 import com.connorhaigh.jalopy.http.ResponseHeader;
 import com.connorhaigh.jalopy.http.StatusCode;
 import com.connorhaigh.jalopy.http.responses.GenericResponseHeader;
-import com.connorhaigh.jalopy.http.responses.RedirectResponseHeader;
 
 public class Dispatcher 
 {
@@ -49,13 +47,8 @@ public class Dispatcher
 	{
 		//handle
 		this.handleDomain();
-		this.handleResource();
-		this.handleContentType();
 		this.handleRequestType();
-		
-		//create header
-		if (this.responseHeader == null)
-			this.responseHeader = new GenericResponseHeader(this.server, StatusCode.OKAY, this.content);
+		this.locateResource();
 		
 		//request and handler
 		Request request = new Request(this.requestHeader, this.domain, this.content, this.resource);
@@ -65,20 +58,8 @@ public class Dispatcher
 		this.dataOutputStream.write(this.responseHeader.assemble().getBytes());
 		
 		//handle
-		if (!this.resource.isDirectory())
+		if (this.responseHeader instanceof GenericResponseHeader)
 			handler.handle();
-	}
-	
-	/**
-	 * Handle finding the correct request handler for the type requested.
-	 * @throws HttpException if the request type is not supported
-	 */
-	private void handleRequestType() throws HttpException
-	{
-		//get mapping
-		this.mapping = this.server.findMappingFor(this.requestHeader.getMethod());
-		if (this.mapping == null)
-			throw new HttpException("No matching request mapping", StatusCode.NOT_IMPLEMENTED);
 	}
 	
 	/**
@@ -94,61 +75,30 @@ public class Dispatcher
 	}
 	
 	/**
-	 * Handle finding the proper resource for the request.
-	 * @throws HttpException if the resource is invalid
+	 * Handle finding the correct request handler for the type requested.
+	 * @throws HttpException if the request type is not supported
 	 */
-	private void handleResource() throws HttpException
+	private void handleRequestType() throws HttpException
 	{
-		//get path and file
-		String path = this.requestHeader.getPath();
-		this.resource = new File(this.domain.getDirectory(), path);
-		
-		if (this.resource.isDirectory())
-		{
-			//index slash check
-			if (!path.endsWith(Http.SLASH))
-			{
-				//get location
-				String location = (this.domain.resolvePathToRelative(this.resource) + Http.SLASH);
-				
-				//redirect
-				this.responseHeader = new RedirectResponseHeader(this.server, StatusCode.FOUND, location);
-				this.resource = new File(this.domain.getDirectory(), path);
-				
-				return;
-			}
-			
-			//get index files
-			for (String index : this.server.getConfiguration().getIndexFiles())
-			{
-				//check index file
-				File indexFile = new File(this.resource, index);
-				if (indexFile.exists())
-				{
-					//use index file
-					this.resource = indexFile;
-					
-					return;
-				}
-			}
-		}
-		
-		//check permissions
-		if (this.resource == null || !this.resource.exists() || this.resource.isDirectory())
-			throw new HttpException("File not found", StatusCode.NOT_FOUND);
-		if (!this.domain.isPathInDirectory(this.resource) || !this.resource.canRead())
-			throw new HttpException("Access denied", StatusCode.ACCESS_DENIED);
+		//get mapping
+		this.mapping = this.server.findMappingFor(this.requestHeader.getMethod());
+		if (this.mapping == null)
+			throw new HttpException("No matching request mapping", StatusCode.NOT_IMPLEMENTED);
 	}
 	
 	/**
-	 * Handle finding the correct content type for the resource.
-	 * @throws HttpException if the content type does not exist
+	 * Locate the requested resource for this request.
+	 * @throws HttpException if the resource is invalid
 	 */
-	private void handleContentType() throws HttpException
+	private void locateResource() throws HttpException
 	{
-		//get MIME and content type
-		MimeType mimeType = this.server.findMimeTypeFor(this.resource);
-		this.content = new Content(mimeType, this.resource.length());
+		//create locator
+		Locator locator = new Locator(this.server, this.domain, this.requestHeader.getPath());
+		locator.locate();
+		
+		//update
+		this.resource = locator.getResource();
+		this.responseHeader = locator.getResponseHeader();
 	}
 	
 	/**

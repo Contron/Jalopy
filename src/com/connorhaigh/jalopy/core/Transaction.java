@@ -80,7 +80,7 @@ public class Transaction implements Runnable
 				{
 					
 				}
-					
+				
 				//log
 				if (this.server.getConfiguration().getLogErrors())
 					this.server.getExceptionLogger().logException(this.socket, requestHeader, exception);
