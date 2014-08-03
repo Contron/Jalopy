@@ -2,6 +2,8 @@ Jalopy
 =====
 A high performance and easily expandable HTTP Web server written in Java.
 
+**Please be aware** that Jalopy is currently still in development.
+
 It aims to be an easily configurable server that can either be ran out of the box, and then customised extensively with additional configuration files.
 
 Features
