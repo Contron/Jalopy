@@ -22,8 +22,9 @@ public class Server implements Runnable
 {
 	/**
 	 * Create a new server.
+	 * @throws IOException if the server could not be created or initialised
 	 */
-	public Server()
+	public Server() throws IOException
 	{
 		this.root = new File(System.getProperty("user.dir"));
 		
@@ -38,6 +39,9 @@ public class Server implements Runnable
 		this.requestLogger = null;
 		this.errorLogger = null;
 		this.exceptionLogger = null;
+		
+		//initialise
+		this.setUp();
 	}
 	
 	/**
@@ -71,7 +75,7 @@ public class Server implements Runnable
 	 * MIME types will be read from the MIME types file.
 	 * @throws IOException
 	 */
-	public void setUp() throws IOException
+	private void setUp() throws IOException
 	{
 		//create managers
 		ConfigurationManager configurationManager = new ConfigurationManager(this.root);

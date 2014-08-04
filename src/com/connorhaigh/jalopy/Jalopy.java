@@ -21,10 +21,6 @@ public class Jalopy
 			System.out.println("Creating server...");
 			Server server = new Server();
 			
-			//set up
-			System.out.println("Setting up server...");
-			server.setUp();
-			
 			//start
 			System.out.println("Starting server...");
 			server.start();
