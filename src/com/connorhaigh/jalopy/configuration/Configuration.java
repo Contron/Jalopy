@@ -12,7 +12,6 @@ public class Configuration
 	{
 		this.serverName = "Jalopy Web Server";
 		this.hostPort = 80;
-		this.maximumThreads = 8;
 		this.logRequests = true;
 		this.logErrors = true;
 		this.indexFiles = new ArrayList<String>(Arrays.<String>asList("index.html", "index.htm", "index.txt"));
@@ -52,24 +51,6 @@ public class Configuration
 	public int getHostPort()
 	{
 		return this.hostPort;
-	}
-	
-	/**
-	 * Sets the maximum number of threads to use for this configuration/
-	 * @param maximumThreads the maximum number of threads
-	 */
-	public void setMaximumThreads(int maximumThreads)
-	{
-		this.maximumThreads = maximumThreads;
-	}
-	
-	/**
-	 * Returns the maximum number of threads to use for this configuration.
-	 * @return the maximum number of threads
-	 */
-	public int getMaximumThreads()
-	{
-		return this.maximumThreads;
 	}
 	
 	/**
@@ -119,7 +100,6 @@ public class Configuration
 	
 	private String serverName;
 	private int hostPort;
-	private int maximumThreads;
 	private boolean logRequests;
 	private boolean logErrors;
 	private ArrayList<String> indexFiles;
