@@ -64,10 +64,10 @@ public class Locator
 		//check permissions
 		if (this.resource == null || !this.resource.exists() || this.resource.isDirectory())
 			throw new HttpException("File not found", StatusCode.NOT_FOUND);
-		if (!this.domain.isPathInDirectory(this.resource) || !this.resource.canRead())
+		if (!this.domain.isPathInDirectory(this.resource) || !this.resource.canRead() || this.resource.isHidden())
 			throw new HttpException("Access denied", StatusCode.ACCESS_DENIED);
 		
-		//get MIME and content type
+		//set MIME and content type
 		MimeType mimeType = this.server.findMimeTypeFor(this.resource);
 		Content content = new Content(mimeType, this.resource.length());
 		

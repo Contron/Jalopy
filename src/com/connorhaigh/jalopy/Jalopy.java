@@ -9,7 +9,7 @@ public class Jalopy
 	 * @param args application arguments
 	 */
 	public static void main(String[] args)
-	{
+	{	
 		//header
 		System.out.println("Jalopy");
 		System.out.println("(C) Connor Haigh 2014");

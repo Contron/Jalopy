@@ -11,7 +11,6 @@ import com.connorhaigh.jalopy.http.Request;
 import com.connorhaigh.jalopy.http.RequestHeader;
 import com.connorhaigh.jalopy.http.ResponseHeader;
 import com.connorhaigh.jalopy.http.StatusCode;
-import com.connorhaigh.jalopy.http.responses.GenericResponseHeader;
 
 public class Dispatcher 
 {
@@ -58,7 +57,7 @@ public class Dispatcher
 		this.dataOutputStream.write(this.responseHeader.assemble().getBytes());
 		
 		//handle
-		if (this.responseHeader instanceof GenericResponseHeader)
+		if (this.responseHeader.body())
 			handler.handle();
 	}
 	

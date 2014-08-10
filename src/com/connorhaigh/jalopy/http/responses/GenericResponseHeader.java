@@ -43,5 +43,14 @@ public class GenericResponseHeader extends ResponseHeader
 		return result.toString();
 	}
 	
+	/**
+	 * Returns if this header should be followed by the body of the response.
+	 * @return if this header should be followed by the body
+	 */
+	public boolean body()
+	{
+		return true;
+	}
+	
 	private Content content;
 }

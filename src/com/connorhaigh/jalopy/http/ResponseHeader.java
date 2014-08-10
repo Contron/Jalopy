@@ -27,8 +27,14 @@ public abstract class ResponseHeader implements Assemblable
 	public abstract String assemble();
 	
 	/**
-	 * Returns the first line in the header.
-	 * @return the first line
+	 * Returns if this header should be followed by the body of the response.
+	 * @return if this header should be followed by the body
+	 */
+	public abstract boolean body();
+	
+	/**
+	 * Returns the HTTP specification for any header.
+	 * @return the HTTP specification
 	 */
 	public String coreHeader()
 	{
