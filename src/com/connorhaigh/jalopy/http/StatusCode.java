@@ -62,6 +62,7 @@ public class StatusCode
 	
 	public static final StatusCode INTERNAL_SERVER_ERROR = new StatusCode(500, "Internal Server Error", "The server encountered an unexpected error and cannot continue.");
 	public static final StatusCode NOT_IMPLEMENTED = new StatusCode(501, "Not Implemented", "The requested feature is not implemented on the server.");
+	public static final StatusCode SERVICE_UNAVAILABLE = new StatusCode(503, "Service Unavailable", "The server is currently unavailable to respond to any new requests.");
 	
 	private int code;
 	private String message;

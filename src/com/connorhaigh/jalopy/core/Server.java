@@ -41,7 +41,9 @@ public class Server implements Runnable
 		this.exceptionLogger = null;
 		
 		//initialise
-		this.setUp();
+		this.createLoggers();
+		this.createManagers();
+		this.addMappings();
 	}
 	
 	/**
@@ -69,40 +71,50 @@ public class Server implements Runnable
 	}
 	
 	/**
-	 * Set up this server by loading all necessary files.
-	 * Configuration will be read from the configuration file.
-	 * Domains will be read from each of the files in the domain directory.
-	 * MIME types will be read from the MIME types file.
-	 * @throws IOException
+	 * Create the server loggers.
+	 * @throws IOException if any files could not be created
 	 */
-	private void setUp() throws IOException
+	private void createLoggers() throws IOException
 	{
-		//create managers
-		ConfigurationManager configurationManager = new ConfigurationManager(this.root);
-		DomainManager domainManager = new DomainManager(this.root);
-		MimeTypeManager mimeTypeManager = new MimeTypeManager(this.root);
-		
-		//create loggers
+		//create
 		this.requestLogger = new RequestLogger(this.root);
 		this.errorLogger = new ErrorLogger(this.root);
 		this.exceptionLogger = new ExceptionLogger(this.root);
 		
-		//load managers
-		configurationManager.loadAll();
-		domainManager.loadAll();
-		mimeTypeManager.loadAll();
-		
-		//set up loggers
+		//set up
 		this.requestLogger.setUp();
 		this.errorLogger.setUp();
 		this.exceptionLogger.setUp();
+	}
+	
+	/**
+	 * Create the configuration managers.
+	 * @throws IOException if any files could not be read
+	 */
+	private void createManagers() throws IOException
+	{
+		//create
+		ConfigurationManager configurationManager = new ConfigurationManager(this.root);
+		DomainManager domainManager = new DomainManager(this.root);
+		MimeTypeManager mimeTypeManager = new MimeTypeManager(this.root);
+		
+		//load
+		configurationManager.loadAll();
+		domainManager.loadAll();
+		mimeTypeManager.loadAll();
 		
 		//update
 		this.configuration = configurationManager.getElement();
 		this.domains = domainManager.getElement();
 		this.mimeTypes = mimeTypeManager.getElement();
-		
-		//add mappings
+	}
+	
+	/**
+	 * Add the default mappings for requests.
+	 */
+	private void addMappings()
+	{
+		//add
 		this.mappings.add(new Mapping(Requests.GET, GetHandler.class));
 		this.mappings.add(new Mapping(Requests.HEAD, HeadHandler.class));
 	}
