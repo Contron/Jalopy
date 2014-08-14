@@ -24,13 +24,13 @@ public class Jalopy
 			//start
 			System.out.println("Starting server...");
 			server.start();
-			System.out.println("Server started sucessfully");
+			System.out.println("Started server sucessfully");
 		}
 		catch (Exception exception)
 		{
 			//error
 			System.err.println();
-			System.err.println("Could not create or start server: " + exception.getMessage());
+			System.err.println("Could not create server: " + exception.getMessage());
 		}
 	}
 }
