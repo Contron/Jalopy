@@ -41,10 +41,21 @@ public class RedirectResponseHeader extends ResponseHeader
 	}
 	
 	/**
+	 * Returns if this header should be preceded with the head of the response.
+	 * @return if this header should be preceded with the head
+	 */
+	@Override
+	public boolean outHead()
+	{
+		return true;
+	}
+	
+	/**
 	 * Returns if this header should be followed by the body of the response.
 	 * @return if this header should be followed by the body
 	 */
-	public boolean body()
+	@Override
+	public boolean outBody()
 	{
 		return false;
 	}

@@ -12,11 +12,15 @@ public class Mapping
 	 * Create a new mapping.
 	 * @param name the name of the request type
 	 * @param handler the handler responsible
+	 * @throws SecurityException if the permissions are not available
+	 * @throws NoSuchMethodException if the handler class does not have the respective methods
 	 */
-	public Mapping(String name, Class<? extends Handler> handler)
+	public Mapping(String name, Class<? extends Handler> handler) throws NoSuchMethodException, SecurityException
 	{
 		this.name = name;
+		
 		this.handler = handler;
+		this.constructor = this.handler.getDeclaredConstructor(Server.class, Request.class, DataOutputStream.class);
 	}
 	
 	/**
@@ -31,11 +35,7 @@ public class Mapping
 	{
 		try
 		{
-			//create instance
-			Constructor<? extends Handler> constructor = this.handler.getDeclaredConstructor(Server.class, Request.class, DataOutputStream.class);
-			Handler handler = constructor.newInstance(server, request, dataOutputStream);
-			
-			return handler;	
+			return this.constructor.newInstance(server, request, dataOutputStream);
 		}
 		catch (Exception exception)
 		{
@@ -62,5 +62,7 @@ public class Mapping
 	}
 	
 	private String name;
+	
 	private Class<? extends Handler> handler;
+	private Constructor<? extends Handler> constructor;
 }

@@ -25,7 +25,7 @@ public abstract class Handler
 	/**
 	 * Handle a request.
 	 * @throws HttpException if a HTTP exception occurs
-	 * @throws IOException if an I/O exception occurs
+	 * @throws IOException if an IO exception occurs
 	 */
 	public abstract void handle() throws HttpException, IOException;
 	

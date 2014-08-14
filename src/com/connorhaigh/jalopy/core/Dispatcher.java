@@ -40,7 +40,7 @@ public class Dispatcher
 	 * @param HttpException if the request could not be completed successfully
 	 * @throws HttpException if a HTTP exception occurs
 	 * @throws ServerException if a server exception occurs
-	 * @throws IOException if an I/O exception occurs
+	 * @throws IOException if an IO exception occurs
 	 */
 	public void dispatch() throws HttpException, ServerException, IOException
 	{
@@ -53,11 +53,12 @@ public class Dispatcher
 		Request request = new Request(this.requestHeader, this.domain, this.content, this.resource);
 		Handler handler = this.mapping.createHandler(this.server, request, this.dataOutputStream);
 		
-		//write header
-		this.dataOutputStream.write(this.responseHeader.assemble().getBytes());
+		//head
+		if (this.responseHeader.outHead())
+			this.dataOutputStream.write(this.responseHeader.assemble().getBytes());
 		
-		//handle
-		if (this.responseHeader.body())
+		//body
+		if (this.responseHeader.outBody())
 			handler.handle();
 	}
 	

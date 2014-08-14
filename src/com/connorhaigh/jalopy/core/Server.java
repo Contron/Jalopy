@@ -23,8 +23,10 @@ public class Server implements Runnable
 	/**
 	 * Create a new server.
 	 * @throws IOException if the server could not be created or initialised
+	 * @throws SecurityException if the permissions are not available
+	 * @throws NoSuchMethodException if any handler class does not have the respective methods
 	 */
-	public Server() throws IOException
+	public Server() throws IOException, NoSuchMethodException, SecurityException
 	{
 		this.root = new File(System.getProperty("user.dir"));
 		
@@ -111,8 +113,10 @@ public class Server implements Runnable
 	
 	/**
 	 * Add the default mappings for requests.
+	 * @throws SecurityException if the permissions are not available
+	 * @throws NoSuchMethodException if the handler class does not have the respective methods
 	 */
-	private void addMappings()
+	private void addMappings() throws NoSuchMethodException, SecurityException
 	{
 		//add
 		this.mappings.add(new Mapping(Requests.GET, GetHandler.class));

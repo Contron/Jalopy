@@ -25,7 +25,7 @@ public class GetHandler extends Handler
 	/**
 	 * Handle a GET request.
 	 * @throws HttpException if a HTTP exception occurs
-	 * @throws IOException if an I/O exception occurs
+	 * @throws IOException if an IO exception occurs
 	 */
 	@Override
 	public void handle() throws HttpException, IOException

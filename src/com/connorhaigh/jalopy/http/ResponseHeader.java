@@ -27,10 +27,16 @@ public abstract class ResponseHeader implements Assemblable
 	public abstract String assemble();
 	
 	/**
+	 * Returns if this header should be preceded with the head of the response.
+	 * @return if this header should be preceded with the head
+	 */
+	public abstract boolean outHead();
+	
+	/**
 	 * Returns if this header should be followed by the body of the response.
 	 * @return if this header should be followed by the body
 	 */
-	public abstract boolean body();
+	public abstract boolean outBody();
 	
 	/**
 	 * Returns the HTTP specification for any header.
