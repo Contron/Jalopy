@@ -73,72 +73,14 @@ public class Server implements Runnable
 	}
 	
 	/**
-	 * Create the server loggers.
-	 * @throws IOException if any files could not be created
-	 */
-	private void createLoggers() throws IOException
-	{
-		//create
-		this.requestLogger = new RequestLogger(this.root);
-		this.errorLogger = new ErrorLogger(this.root);
-		this.exceptionLogger = new ExceptionLogger(this.root);
-		
-		//set up
-		this.requestLogger.setUp();
-		this.errorLogger.setUp();
-		this.exceptionLogger.setUp();
-	}
-	
-	/**
-	 * Create the configuration managers.
-	 * @throws IOException if any files could not be read
-	 */
-	private void createManagers() throws IOException
-	{
-		//create
-		ConfigurationManager configurationManager = new ConfigurationManager(this.root);
-		DomainManager domainManager = new DomainManager(this.root);
-		MimeTypeManager mimeTypeManager = new MimeTypeManager(this.root);
-		
-		//load
-		configurationManager.loadAll();
-		domainManager.loadAll();
-		mimeTypeManager.loadAll();
-		
-		//update
-		this.configuration = configurationManager.getElement();
-		this.domains = domainManager.getElement();
-		this.mimeTypes = mimeTypeManager.getElement();
-	}
-	
-	/**
-	 * Add the default mappings for requests.
-	 * @throws SecurityException if the permissions are not available
-	 * @throws NoSuchMethodException if the handler class does not have the respective methods
-	 */
-	private void addMappings() throws NoSuchMethodException, SecurityException
-	{
-		//add
-		this.mappings.add(new Mapping(Requests.GET, GetHandler.class));
-		this.mappings.add(new Mapping(Requests.HEAD, HeadHandler.class));
-	}
-	
-	/**
 	 * Start the server and begin to listen for connections.
 	 * @throws ServerException if the server is not properly configured
 	 * @throws IOException if the server could not be started
 	 */
 	public void start() throws ServerException, IOException
 	{
-		//check configuration
-		if (this.configuration == null)
-			throw new ServerException("Missing configuration");
-		if (this.domains == null || this.domains.isEmpty())
-			throw new ServerException("Missing or no domains");
-		if (this.mimeTypes == null || this.mimeTypes.isEmpty())
-			throw new ServerException("Missing or no MIME types");
-		if (this.mappings == null || this.mappings.isEmpty())
-			throw new ServerException("Missing or no request mappings");
+		//validate
+		this.validateServer();
 		
 		//create server
 		this.running = true;
@@ -203,6 +145,80 @@ public class Server implements Runnable
 			.filter(handlerMapper -> handlerMapper.getName().equals(method))
 			.findFirst()
 			.orElse(null);
+	}
+	
+	
+	/**
+	 * Create the server loggers.
+	 * @throws IOException if any files could not be created
+	 */
+	private void createLoggers() throws IOException
+	{
+		//create
+		this.requestLogger = new RequestLogger(this.root);
+		this.errorLogger = new ErrorLogger(this.root);
+		this.exceptionLogger = new ExceptionLogger(this.root);
+		
+		//set up
+		this.requestLogger.setUp();
+		this.errorLogger.setUp();
+		this.exceptionLogger.setUp();
+	}
+	
+	/**
+	 * Create the configuration managers.
+	 * @throws IOException if any files could not be read
+	 */
+	private void createManagers() throws IOException
+	{
+		//create
+		ConfigurationManager configurationManager = new ConfigurationManager(this.root);
+		DomainManager domainManager = new DomainManager(this.root);
+		MimeTypeManager mimeTypeManager = new MimeTypeManager(this.root);
+		
+		//load
+		configurationManager.loadAll();
+		domainManager.loadAll();
+		mimeTypeManager.loadAll();
+		
+		//update
+		this.configuration = configurationManager.getElement();
+		this.domains = domainManager.getElement();
+		this.mimeTypes = mimeTypeManager.getElement();
+	}
+	
+	/**
+	 * Add the default mappings for requests.
+	 * @throws SecurityException if the permissions are not available
+	 * @throws NoSuchMethodException if the handler class does not have the respective methods
+	 */
+	private void addMappings() throws NoSuchMethodException, SecurityException
+	{
+		//add
+		this.mappings.add(new Mapping(Requests.GET, GetHandler.class));
+		this.mappings.add(new Mapping(Requests.HEAD, HeadHandler.class));
+	}
+	
+	/**
+	 * Validate that the server is in a working state.
+	 * @throws ServerException if the server is not in a working state
+	 */
+	private void validateServer() throws ServerException
+	{
+		//check configuration
+		if (this.configuration == null)
+			throw new ServerException("Missing configuration");
+		if (this.domains == null || this.domains.isEmpty())
+			throw new ServerException("Missing or no domains");
+		if (this.mimeTypes == null || this.mimeTypes.isEmpty())
+			throw new ServerException("Missing or no MIME types");
+		if (this.mappings == null || this.mappings.isEmpty())
+			throw new ServerException("Missing or no request mappings");
+		
+		//validate domain directories exist
+		for (Domain domain : this.domains)
+			if (!domain.getDirectory().exists())
+				throw new ServerException("Directory for domain '" + domain.getName() + "' does not exist: " + domain.getDirectory());
 	}
 	
 	/**

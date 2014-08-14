@@ -30,7 +30,7 @@ public class Jalopy
 		{
 			//error
 			System.err.println();
-			System.err.println("Could not create and start server: " + exception.getMessage());
+			System.err.println("Could not create or start server: " + exception.getMessage());
 		}
 	}
 }
