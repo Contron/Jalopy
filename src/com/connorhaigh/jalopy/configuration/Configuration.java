@@ -14,16 +14,7 @@ public class Configuration
 		this.hostPort = 80;
 		this.logRequests = true;
 		this.logErrors = true;
-		this.indexFiles = new ArrayList<String>(Arrays.<String>asList("index.html", "index.htm", "index.txt"));
-	}
-	
-	/**
-	 * Sets the server name to use for this configuration.
-	 * @param serverName the server name
-	 */
-	public void setServerName(String serverName)
-	{
-		this.serverName = serverName;
+		this.indexFiles = new ArrayList<String>(Arrays.asList("index.html", "index.htm", "index.txt"));
 	}
 	
 	/**
@@ -36,15 +27,6 @@ public class Configuration
 	}
 	
 	/**
-	 * Sets the host port to use for this configuration.
-	 * @param hostPort the host port
-	 */
-	public void setHostPort(int hostPort)
-	{
-		this.hostPort = hostPort;
-	}
-	
-	/**
 	 * Returns the host port to use for this configuration.
 	 * @return the host port
 	 */
@@ -54,30 +36,12 @@ public class Configuration
 	}
 	
 	/**
-	 * Sets if requests should be logged for this configuration.
-	 * @param logRequests if requests should be logged
-	 */
-	public void setLogRequests(boolean logRequests)
-	{
-		this.logRequests = logRequests;
-	}
-	
-	/**
 	 * Returns if requests should be logged for this configuration.
 	 * @return if requests should be logged
 	 */
 	public boolean getLogRequests()
 	{
 		return this.logRequests;
-	}
-	
-	/**
-	 * Sets if errors should be logged for this configuration.
-	 * @param logErrors if errors should be logged
-	 */
-	public void setLogErrors(boolean logErrors)
-	{
-		this.logErrors = logErrors;
 	}
 	
 	/**

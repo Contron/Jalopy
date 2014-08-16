@@ -38,16 +38,20 @@ public class MimeTypeManager extends Manager<ArrayList<MimeType>>
 		result.add(new MimeType("shtml", "text", "html"));
 		result.add(new MimeType("css", "text", "css"));
 		result.add(new MimeType("rtf", "text", "rtf"));
+		result.add(new MimeType("rdf", "text", "rdf"));
 		result.add(new MimeType("java", "text", "plain"));
+		result.add(new MimeType("cs", "text", "plain"));
+		result.add(new MimeType("php", "text", "php"));
+		result.add(new MimeType("js", "text", "javascript"));
 		result.add(new MimeType("asp", "text", "asp"));
 		
 		//applications
-		result.add(new MimeType("js", "application", "javascript"));
 		result.add(new MimeType("zip", "application", "zip"));
 		result.add(new MimeType("jar", "application", "java-archive"));
 		result.add(new MimeType("exe", "application", "octet-stream"));
 		result.add(new MimeType("pdf", "application", "pdf"));
 		result.add(new MimeType("dtd", "application", "xml-dtd"));
+		result.add(new MimeType("ps", "application", "postscript"));
 		
 		//images
 		result.add(new MimeType("png", "image", "png"));
@@ -72,6 +76,8 @@ public class MimeTypeManager extends Manager<ArrayList<MimeType>>
 		result.add(new MimeType("mpg", "video", "mpeg"));
 		result.add(new MimeType("mp4", "video", "mp4"));
 		result.add(new MimeType("webm", "video", "webm"));
+		result.add(new MimeType("mov", "video", "quicktime"));
+		result.add(new MimeType("3gp", "video", "3gp"));
 		
 		//non-standard types
 		result.add(new MimeType("ico", "image", "x-icon"));

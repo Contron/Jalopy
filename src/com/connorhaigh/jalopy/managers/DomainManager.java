@@ -25,6 +25,6 @@ public class DomainManager extends Manager<ArrayList<Domain>>
 	 */
 	public ArrayList<Domain> generateDefault()
 	{
-		return new ArrayList<Domain>(Arrays.<Domain>asList(new Domain()));
+		return new ArrayList<Domain>(Arrays.asList(new Domain()));
 	}
 }
