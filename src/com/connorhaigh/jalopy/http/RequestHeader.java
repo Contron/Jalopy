@@ -33,10 +33,13 @@ public class RequestHeader
 		//token map
 		HashMap<String, String> headers = new HashMap<String, String>();
 		
-		//split status line
+		//get status line
 		String statusLine = bufferedReader.readLine();
-		String[] statusLineParts = statusLine.split(" ");
+		if (statusLine == null)
+			throw new HttpException("Missing status line", StatusCode.BAD_REQUEST);
 		
+		//split status line
+		String[] statusLineParts = statusLine.split(" ");
 		if (statusLineParts.length < 3)
 			throw new HttpException("Invalid status line parameters", StatusCode.BAD_REQUEST);
 
