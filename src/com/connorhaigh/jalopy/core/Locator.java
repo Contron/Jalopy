@@ -13,7 +13,7 @@ import com.connorhaigh.jalopy.http.responses.RedirectResponseHeader;
 public class Locator 
 {
 	/**
-	 * Create a new locator.
+	 * Creates a new locator.
 	 * @param server the owning server
 	 * @param domain the domain holding the resource
 	 * @param path the relative path of the resource
@@ -28,7 +28,7 @@ public class Locator
 	}
 	
 	/**
-	 * Locate the suitable resource from the given path.
+	 * Locates the suitable resource from the given path.
 	 * @throws HttpException if the resource is invalid
 	 */
 	public void locate() throws HttpException

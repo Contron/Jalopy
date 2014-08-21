@@ -12,7 +12,7 @@ import com.thoughtworks.xstream.XStream;
 public abstract class Manager<Element>
 {
 	/**
-	 * Create a new manager.
+	 * Creates a new manager.
 	 * @param root the root directory
 	 * @param directory the sub directory
 	 * @param file the file
@@ -27,7 +27,7 @@ public abstract class Manager<Element>
 	}
 	
 	/**
-	 * Load this manager's properties from file.
+	 * Loads this manager's properties from file.
 	 * @throws IOException if the file could not be read or created
 	 */
 	public void loadAll() throws IOException
@@ -65,7 +65,7 @@ public abstract class Manager<Element>
 	}
 	
 	/**
-	 * Load this manager's properties from file.
+	 * Loads this manager's properties from file.
 	 * @param xstream the XStream instance
 	 * @return the loaded properties
 	 * @throws IOException if the file could not be read
@@ -80,7 +80,7 @@ public abstract class Manager<Element>
 	}
 	
 	/**
-	 * Generate a default set of properties for this manager.
+	 * Generates a default set of properties for this manager.
 	 * @return the default properties
 	 */
 	public abstract Element generateDefault();

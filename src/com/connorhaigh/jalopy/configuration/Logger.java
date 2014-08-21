@@ -15,7 +15,7 @@ import com.connorhaigh.jalopy.resources.DateTimeFormatters;
 public class Logger 
 {
 	/**
-	 * Create a new logger.
+	 * Creates a new logger.
 	 * @param root the root directory
 	 * @param directory the sub directory
 	 * @param file the log file

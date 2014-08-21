@@ -12,7 +12,7 @@ import com.connorhaigh.jalopy.http.Request;
 public class GetHandler extends Handler
 {
 	/**
-	 * Create a new GET request handler.
+	 * Creates a new GET request handler.
 	 * @param server the owning server
 	 * @param requestHeader the received request
 	 * @param dataOutputStream the data output stream of the request
@@ -23,7 +23,7 @@ public class GetHandler extends Handler
 	}
 	
 	/**
-	 * Handle a GET request.
+	 * Handles a GET request.
 	 * @throws HttpException if a HTTP exception occurs
 	 * @throws IOException if an IO exception occurs
 	 */

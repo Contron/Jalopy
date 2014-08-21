@@ -13,7 +13,7 @@ import com.connorhaigh.jalopy.http.RequestHeader;
 public class Transaction implements Runnable
 {
 	/**
-	 * Create a new transaction.
+	 * Creates a new transaction.
 	 * @param server the owning server
 	 * @param socket the client's socket
 	 */
@@ -24,7 +24,7 @@ public class Transaction implements Runnable
 	}
 	
 	/**
-	 * Run and handle the transaction between the server and the client.
+	 * Runs and handles the transaction between the server and the client.
 	 */
 	@Override
 	public void run()
@@ -97,7 +97,7 @@ public class Transaction implements Runnable
 	}
 	
 	/**
-	 * Handle the transaction between the server and the client.
+	 * Handles the transaction between the server and the client.
 	 */
 	public void handle()
 	{

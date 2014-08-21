@@ -5,7 +5,7 @@ import com.connorhaigh.jalopy.core.MimeType;
 public class Content 
 {
 	/**
-	 * Create a new content definition.
+	 * Creates a new content definition.
 	 * @param mimeType the matching MIME type
 	 * @param length the length of the content
 	 */

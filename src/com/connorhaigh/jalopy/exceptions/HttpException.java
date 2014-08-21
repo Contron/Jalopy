@@ -5,7 +5,7 @@ import com.connorhaigh.jalopy.http.StatusCode;
 public class HttpException extends Exception
 {
 	/**
-	 * Create a new HTTP exception with a matching status code.
+	 * Creates a new HTTP exception with a matching status code.
 	 * @param message the detailed message of the exception
 	 * @param statusCode the relevant status code
 	 */

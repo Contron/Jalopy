@@ -11,7 +11,7 @@ import com.connorhaigh.jalopy.resources.Directories;
 public class DomainManager extends Manager<ArrayList<Domain>>
 {
 	/**
-	 * Create a new domain manager.
+	 * Creates a new domain manager.
 	 * @param root the root directory
 	 */
 	public DomainManager(File root)
@@ -20,7 +20,7 @@ public class DomainManager extends Manager<ArrayList<Domain>>
 	}
 	
 	/**
-	 * Generate a default set of properties for this domain manager.
+	 * Generates a default set of properties for this domain manager.
 	 * @return the default properties
 	 */
 	public ArrayList<Domain> generateDefault()

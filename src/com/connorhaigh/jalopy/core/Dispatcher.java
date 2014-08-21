@@ -15,7 +15,7 @@ import com.connorhaigh.jalopy.http.StatusCode;
 public class Dispatcher 
 {
 	/**
-	 * Create a new request dispatcher.
+	 * Creates a new request dispatcher.
 	 * @param server the owning server
 	 * @param requestHeader the request headers of the request
 	 * @param dataOutputStream the data output stream of the request
@@ -63,7 +63,7 @@ public class Dispatcher
 	}
 	
 	/**
-	 * Handle finding the matching domain for the request.
+	 * Handles finding the matching domain for the request.
 	 * @throws HttpException if the domain does not exist
 	 */
 	private void handleDomain() throws HttpException
@@ -76,7 +76,7 @@ public class Dispatcher
 	}
 	
 	/**
-	 * Handle finding the correct request handler for the type requested.
+	 * Handles finding the correct request handler for the type requested.
 	 * @throws HttpException if the request type is not supported
 	 */
 	private void handleRequestType() throws HttpException
@@ -89,7 +89,7 @@ public class Dispatcher
 	}
 	
 	/**
-	 * Locate the requested resource for this request.
+	 * Locates the requested resource for this request.
 	 * @throws HttpException if the resource is invalid
 	 */
 	private void locateResource() throws HttpException

@@ -9,7 +9,7 @@ import com.connorhaigh.jalopy.resources.DateTimeFormatters;
 public abstract class ResponseHeader implements Assemblable
 {
 	/**
-	 * Create a new header.
+	 * Creates a new header.
 	 * @param server the owning server
 	 * @param statusCode the status code of the response
 	 */
@@ -20,7 +20,7 @@ public abstract class ResponseHeader implements Assemblable
 	}
 	
 	/**
-	 * Assemble this header into a HTTP-compliant header.
+	 * Assembles this header into a HTTP-compliant header.
 	 * @return the assembled header
 	 */
 	@Override

@@ -9,7 +9,7 @@ import com.connorhaigh.jalopy.exceptions.HttpException;
 public class RequestHeader 
 {
 	/**
-	 * Create a new empty request header.
+	 * Creates a new empty request header.
 	 */
 	public RequestHeader()
 	{

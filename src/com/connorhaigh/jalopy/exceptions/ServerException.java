@@ -3,7 +3,7 @@ package com.connorhaigh.jalopy.exceptions;
 public class ServerException extends Exception
 {
 	/**
-	 * Create a new server exception.
+	 * Creates a new server exception.
 	 * @param message the message
 	 */
 	public ServerException(String message)

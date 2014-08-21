@@ -11,7 +11,7 @@ import com.connorhaigh.jalopy.http.Request;
 public class HeadHandler extends Handler
 {
 	/**
-	 * Create a new HEAD request handler.
+	 * Creates a new HEAD request handler.
 	 * @param server the owning server
 	 * @param requestHeader the received request
 	 * @param dataOutputStream the data output stream of the request
@@ -22,7 +22,7 @@ public class HeadHandler extends Handler
 	}
 	
 	/**
-	 * Handle a HEAD request.
+	 * Handles a HEAD request.
 	 * @throws HttpException if a HTTP exception occurs
 	 * @throws IOException if an IO exception occurs
 	 */

@@ -9,7 +9,7 @@ import com.connorhaigh.jalopy.http.StatusCode;
 public class GenericResponseHeader extends ResponseHeader
 {
 	/**
-	 * Create a new generic header.
+	 * Creates a new generic header.
 	 * @param server the owning server
 	 * @param statusCode the status code
 	 * @param content the content definition
@@ -22,7 +22,7 @@ public class GenericResponseHeader extends ResponseHeader
 	}
 	
 	/**
-	 * Assemble this header into a HTTP-compliant header.
+	 * Assembles this header into a HTTP-compliant header.
 	 * @return the assembled header
 	 */
 	@Override

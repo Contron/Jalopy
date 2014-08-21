@@ -6,7 +6,7 @@ import com.connorhaigh.jalopy.http.ResponseHeader;
 public class Page implements Assemblable
 {
 	/**
-	 * Create a new page.
+	 * Creates a new page.
 	 * @param responseHeader the complete response header
 	 * @param content the complete HTML content
 	 */
@@ -17,7 +17,7 @@ public class Page implements Assemblable
 	}
 	
 	/**
-	 * Assemble this page into a HTML-compliant Web page.
+	 * Assembles this page into a HTML-compliant Web page.
 	 * @return the assembled page
 	 */
 	@Override

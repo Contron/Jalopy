@@ -3,7 +3,7 @@ package com.connorhaigh.jalopy.http;
 public class StatusCode 
 {
 	/**
-	 * Create a new status code.
+	 * Creates a new status code.
 	 * @param code the code
 	 * @param message the short message
 	 * @param description the detailed description of the message

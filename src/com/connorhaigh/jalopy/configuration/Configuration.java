@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Configuration 
 {
 	/**
-	 * Create a new default configuration.
+	 * Creates a new default configuration.
 	 */
 	public Configuration()
 	{

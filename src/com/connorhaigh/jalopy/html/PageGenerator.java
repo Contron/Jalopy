@@ -11,7 +11,7 @@ import com.connorhaigh.jalopy.http.responses.GenericResponseHeader;
 public class PageGenerator 
 {
 	/**
-	 * Generate a placeholder page as HTML text.
+	 * Generates a placeholder page as HTML text.
 	 * @param server the owning server
 	 * @param title the title of the message
 	 * @param message the message to display
@@ -40,7 +40,7 @@ public class PageGenerator
 	}
 	
 	/**
-	 * Generate a HTML page for a HTTP exception.
+	 * Generates a HTML page for a HTTP exception.
 	 * @param server the owning server
 	 * @param httpException the HTTP exception
 	 * @return the generated HTML text
@@ -51,7 +51,7 @@ public class PageGenerator
 	}
 	
 	/**
-	 * Generate a complete page (headers and HTML content) for a placeholder HTML page.
+	 * Generates a complete page (headers and HTML content) for a placeholder HTML page.
 	 * @param server the owning server
 	 * @param title the title of the message
 	 * @param message the message to display
@@ -71,7 +71,7 @@ public class PageGenerator
 	}
 	
 	/**
-	 * Generate a complete page (headers and HTML content) for a HTTP exception.
+	 * Generates a complete page (headers and HTML content) for a HTTP exception.
 	 * @param server the owning server
 	 * @param httpException the HTTP exception
 	 * @return the generated complete response

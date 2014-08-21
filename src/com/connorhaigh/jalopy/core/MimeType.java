@@ -3,7 +3,7 @@ package com.connorhaigh.jalopy.core;
 public class MimeType 
 {
 	/**
-	 * Create a new MIME type.
+	 * Creates a new MIME type.
 	 * @param extension the extension this type is for
 	 * @param file the file to represent
 	 * @param type the MIME type
@@ -16,7 +16,7 @@ public class MimeType
 	}
 	
 	/**
-	 * Create a new, empty MIME type.
+	 * Creates a new, empty MIME type.
 	 */
 	public MimeType()
 	{

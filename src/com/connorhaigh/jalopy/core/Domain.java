@@ -5,7 +5,7 @@ import java.io.File;
 public class Domain 
 {
 	/**
-	 * Create a new domain.
+	 * Creates a new domain.
 	 * @param name the name of the domain
 	 * @param directory the path to the domain's root
 	 * @param host the host URL of this domain
@@ -18,7 +18,7 @@ public class Domain
 	}
 	
 	/**
-	 * Create a new, empty domain.
+	 * Creates a new, empty domain.
 	 */
 	public Domain()
 	{

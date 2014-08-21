@@ -9,7 +9,7 @@ import com.connorhaigh.jalopy.resources.Directories;
 public class ConfigurationManager extends Manager<Configuration>
 {
 	/**
-	 * Create a new domain manager.
+	 * Creates a new domain manager.
 	 * @param root the root directory
 	 */
 	public ConfigurationManager(File root)
@@ -18,7 +18,7 @@ public class ConfigurationManager extends Manager<Configuration>
 	}
 	
 	/**
-	 * Generate a default set of properties for this domain manager.
+	 * Generates a default set of properties for this domain manager.
 	 * @return the default properties
 	 */
 	public Configuration generateDefault()

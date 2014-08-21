@@ -7,7 +7,7 @@ import com.connorhaigh.jalopy.core.Domain;
 public class Request 
 {
 	/**
-	 * Create a new request.
+	 * Creates a new request.
 	 * @param requestHeader the request headers received
 	 * @param domain the domain for the request
 	 * @param resource the specific resource of the request

@@ -21,7 +21,7 @@ import com.connorhaigh.jalopy.resources.Requests;
 public class Server implements Runnable
 {
 	/**
-	 * Create a new server.
+	 * Creates a new server.
 	 * @throws IOException if the server could not be created or initialised
 	 * @throws SecurityException if the permissions are not available
 	 * @throws NoSuchMethodException if any handler class does not have the respective methods
@@ -49,7 +49,7 @@ public class Server implements Runnable
 	}
 	
 	/**
-	 * Run and handle the main server process.
+	 * Runs and handles the main server process.
 	 */
 	@Override
 	public void run()
@@ -73,7 +73,7 @@ public class Server implements Runnable
 	}
 	
 	/**
-	 * Start the server and begin to listen for connections.
+	 * Starts the server and begin to listen for connections.
 	 * @throws ServerException if the server is not properly configured
 	 * @throws IOException if the server could not be started
 	 */
@@ -93,7 +93,7 @@ public class Server implements Runnable
 	}
 	
 	/**
-	 * Stop the server and shut it down.
+	 * Stops the server and shut it down.
 	 * @throws IOException if the server could not be stopped
 	 */
 	public void stop() throws IOException
@@ -135,7 +135,7 @@ public class Server implements Runnable
 	}
 	
 	/**
-	 * Find a mapping for the specified request type, or null.
+	 * Finds a mapping for the specified request type, or null.
 	 * @param type the type
 	 * @return the mapping
 	 */
@@ -149,7 +149,7 @@ public class Server implements Runnable
 	
 	
 	/**
-	 * Create the server loggers.
+	 * Creates the server loggers.
 	 * @throws IOException if any files could not be created
 	 */
 	private void createLoggers() throws IOException
@@ -166,7 +166,7 @@ public class Server implements Runnable
 	}
 	
 	/**
-	 * Create the configuration managers.
+	 * Creates the configuration managers.
 	 * @throws IOException if any files could not be read
 	 */
 	private void createManagers() throws IOException
@@ -188,7 +188,7 @@ public class Server implements Runnable
 	}
 	
 	/**
-	 * Add the default mappings for requests.
+	 * Adds the default mappings for requests.
 	 * @throws SecurityException if the permissions are not available
 	 * @throws NoSuchMethodException if the handler class does not have the respective methods
 	 */
@@ -200,7 +200,7 @@ public class Server implements Runnable
 	}
 	
 	/**
-	 * Validate that the server is in a working state.
+	 * Validates that the server is in a working state.
 	 * @throws ServerException if the server is not in a working state
 	 */
 	private void validateServer() throws ServerException

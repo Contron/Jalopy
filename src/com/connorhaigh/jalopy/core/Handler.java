@@ -9,7 +9,7 @@ import com.connorhaigh.jalopy.http.Request;
 public abstract class Handler 
 {
 	/**
-	 * Create a new request handler.
+	 * Creates a new request handler.
 	 * @param server the owning server
 	 * @param requestHeader the received request
 	 * @param dataOutputStream the data output stream of the request
@@ -23,7 +23,7 @@ public abstract class Handler
 	}
 	
 	/**
-	 * Handle a request.
+	 * Handles a request.
 	 * @throws HttpException if a HTTP exception occurs
 	 * @throws IOException if an IO exception occurs
 	 */

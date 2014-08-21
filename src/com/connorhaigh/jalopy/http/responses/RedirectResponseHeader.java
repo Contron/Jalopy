@@ -8,7 +8,7 @@ import com.connorhaigh.jalopy.http.StatusCode;
 public class RedirectResponseHeader extends ResponseHeader
 {
 	/**
-	 * Create a new redirect response header.
+	 * Creates a new redirect response header.
 	 * @param server the owning server
 	 * @param statusCode the status code
 	 * @param location the location to redirect to
@@ -21,7 +21,7 @@ public class RedirectResponseHeader extends ResponseHeader
 	}
 	
 	/**
-	 * Assemble this header into a HTTP-compliant header.
+	 * Assembles this header into a HTTP-compliant header.
 	 * @return the assembled header	
 	 */
 	@Override

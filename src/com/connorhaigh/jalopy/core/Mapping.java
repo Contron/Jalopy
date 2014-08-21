@@ -9,7 +9,7 @@ import com.connorhaigh.jalopy.http.Request;
 public class Mapping 
 {
 	/**
-	 * Create a new mapping.
+	 * Creates a new mapping.
 	 * @param name the name of the request type
 	 * @param handler the handler responsible
 	 * @throws SecurityException if the permissions are not available
@@ -24,7 +24,7 @@ public class Mapping
 	}
 	
 	/**
-	 * Create the handler this mapping represents.
+	 * Creates the handler this mapping represents.
 	 * @param server the owning server
 	 * @param requestHeader the received request
 	 * @param dataOutputStream the data output stream of the request

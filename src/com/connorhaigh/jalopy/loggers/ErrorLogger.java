@@ -8,7 +8,7 @@ import com.connorhaigh.jalopy.resources.Directories;
 public class ErrorLogger extends Logger
 {
 	/**
-	 * Create a new information logger.
+	 * Creates a new information logger.
 	 * @param root the root directory
 	 */
 	public ErrorLogger(File root)
