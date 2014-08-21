@@ -70,8 +70,9 @@ public class Dispatcher
 	{
 		//get domain
 		this.domain = this.server.findDomainFor(this.requestHeader.getHost());
+		
 		if (this.domain == null)
-			throw new HttpException("No matching host found", StatusCode.NOT_FOUND);
+			throw new HttpException("No matching domain for host found", StatusCode.NOT_FOUND);
 	}
 	
 	/**
@@ -82,8 +83,9 @@ public class Dispatcher
 	{
 		//get mapping
 		this.mapping = this.server.findMappingFor(this.requestHeader.getMethod());
+		
 		if (this.mapping == null)
-			throw new HttpException("No matching request mapping", StatusCode.NOT_IMPLEMENTED);
+			throw new HttpException("No matching handler for method found", StatusCode.NOT_IMPLEMENTED);
 	}
 	
 	/**
