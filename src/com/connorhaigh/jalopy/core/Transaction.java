@@ -44,6 +44,7 @@ public class Transaction implements Runnable
 				//read headers
 				requestHeader = new RequestHeader();
 				requestHeader.gather(bufferedReader);
+				requestHeader.sanitise();
 				
 				//dispatch
 				dispatcher = new Dispatcher(this.server, requestHeader, dataOutputStream);

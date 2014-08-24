@@ -75,6 +75,16 @@ public class RequestHeader
 	}
 	
 	/**
+	 * Sanitises the received data from the client.
+	 */
+	public void sanitise()
+	{
+		//clean method and host
+		this.method = this.method.toUpperCase();
+		this.host = this.host.toLowerCase();
+	}
+	
+	/**
 	 * Returns the request method in this request header.
 	 * @return the request method
 	 */
