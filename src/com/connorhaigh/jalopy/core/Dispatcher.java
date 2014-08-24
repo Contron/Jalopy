@@ -29,14 +29,14 @@ public class Dispatcher
 		
 		this.mapping = null;
 		this.domain = null;
-		this.resource = null;
 		this.content = null;
 		
+		this.resource = null;
 		this.responseHeader = null;
 	}
 	
 	/**
-	 * Dispatch and deal with this request.
+	 * Dispatches and deals with this request.
 	 * @param HttpException if the request could not be completed successfully
 	 * @throws HttpException if a HTTP exception occurs
 	 * @throws ServerException if a server exception occurs
@@ -119,8 +119,8 @@ public class Dispatcher
 	
 	private Mapping mapping;
 	private Domain domain;
-	private File resource;
 	private Content content;
 	
+	private File resource;
 	private ResponseHeader responseHeader;
 }
