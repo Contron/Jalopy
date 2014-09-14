@@ -9,7 +9,7 @@ import com.connorhaigh.jalopy.core.Domain;
 import com.connorhaigh.jalopy.core.MimeType;
 import com.thoughtworks.xstream.XStream;
 
-public abstract class Manager<Element>
+public abstract class Manager<E>
 {
 	/**
 	 * Creates a new manager.
@@ -71,11 +71,11 @@ public abstract class Manager<Element>
 	 * @throws IOException if the file could not be read
 	 */
 	@SuppressWarnings("unchecked")
-	public Element loadFromFile(XStream xstream) throws IOException
+	public E loadFromFile(XStream xstream) throws IOException
 	{
 		try (FileInputStream fileInputStream = new FileInputStream(this.file))
 		{
-			return (Element) xstream.fromXML(fileInputStream);
+			return (E) xstream.fromXML(fileInputStream);
 		}
 	}
 	
@@ -83,13 +83,13 @@ public abstract class Manager<Element>
 	 * Generates a default set of properties for this manager.
 	 * @return the default properties
 	 */
-	public abstract Element generateDefault();
+	public abstract E generateDefault();
 	
 	/**
 	 * Returns the loaded (or default) element for this manager.
 	 * @return the loaded (or default) element
 	 */
-	public Element getElement()
+	public E getElement()
 	{
 		return this.element;
 	}
@@ -98,5 +98,5 @@ public abstract class Manager<Element>
 	private File directory;
 	private File file;
 	
-	private Element element;
+	private E element;
 }
