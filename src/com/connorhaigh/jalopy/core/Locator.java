@@ -24,6 +24,7 @@ public class Locator
 		this.domain = domain;
 		this.path = path;
 		
+		this.resource = null;
 		this.responseHeader = null;
 	}
 	
@@ -33,8 +34,9 @@ public class Locator
 	 */
 	public void locate() throws HttpException
 	{
-		//get resource
+		//create resource
 		this.resource = new File(this.domain.getDirectory(), this.path);
+		
 		if (this.resource.isDirectory())
 		{
 			//trailing slash
@@ -74,8 +76,9 @@ public class Locator
 		//loop files
 		for (String index : this.server.getConfiguration().getIndexFiles())
 		{
-			//check index file
+			//create index file
 			File indexFile = new File(this.resource, index);
+			
 			if (indexFile.exists())
 			{
 				//use index file
@@ -132,8 +135,8 @@ public class Locator
 	
 	private Server server;
 	private Domain domain;
-	private File resource;
 	private String path;
 	
+	private File resource;
 	private ResponseHeader responseHeader;
 }

@@ -116,7 +116,7 @@ public class Server implements Runnable
 	public Domain findDomainFor(String host)
 	{
 		return this.domains.stream()
-			.filter(domain -> host.endsWith(domain.getHost()))
+			.filter(domain -> this.configuration.getIgnoreWwwPrefix() ? host.endsWith(domain.getHost()) : host.equals(domain.getHost()))
 			.findFirst()
 			.orElse(null);
 	}
@@ -146,7 +146,6 @@ public class Server implements Runnable
 			.findFirst()
 			.orElse(null);
 	}
-	
 	
 	/**
 	 * Creates the server loggers.
@@ -238,8 +237,7 @@ public class Server implements Runnable
 	{
 		return String.format
 		(
-			"%s (Java %s (%s-bit), on %s (version %s))",
-			this.configuration.getServerName(),
+			"Jalopy Web Server (Java %s (%s-bit), on %s (version %s))",
 			System.getProperty("java.version"),
 			System.getProperty("sun.arch.data.model"),
 			System.getProperty("os.name"),

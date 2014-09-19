@@ -23,7 +23,7 @@ public class RequestHeader
 	}
 	
 	/**
-	 * Gather this request header's contents from an input stream.
+	 * Gathers this request header's contents from an input stream.
 	 * @param bufferedReader the input stream to read
 	 * @throws IOException if the stream could not be read
 	 * throws HttpException if a HTTP related exception occurs
