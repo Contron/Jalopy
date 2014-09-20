@@ -42,12 +42,12 @@ public class RequestHeader
 		String[] statusLineParts = statusLine.split(" ");
 		if (statusLineParts.length < 3)
 			throw new HttpException("Invalid status line parameters", StatusCode.BAD_REQUEST);
-
+		
 		//get request, path and specification
 		this.method = statusLineParts[0];
 		this.path = statusLineParts[1];
 		this.specification = statusLineParts[2];
-
+		
 		//read lines
 		String line = null;
 		while ((line = bufferedReader.readLine()) != null)
@@ -55,7 +55,7 @@ public class RequestHeader
 			//skip if empty
 			if (line.isEmpty())
 				break;
-
+			
 			//split
 			String[] parts = line.split(": ");
 			

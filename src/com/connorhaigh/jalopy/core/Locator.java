@@ -95,9 +95,11 @@ public class Locator
 	 */
 	private void verifyResource() throws HttpException
 	{
-		//check permissions
+		//check exists
 		if (this.resource == null || !this.resource.exists() || this.resource.isDirectory())
 			throw new HttpException("File not found", StatusCode.NOT_FOUND);
+		
+		//check permissions
 		if (!this.domain.isPathInDirectory(this.resource) || !this.resource.canRead() || this.resource.isHidden())
 			throw new HttpException("Access denied", StatusCode.ACCESS_DENIED);
 	}

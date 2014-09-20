@@ -28,22 +28,27 @@ public class MimeTypeManager extends Manager<ArrayList<MimeType>>
 		ArrayList<MimeType> result = new ArrayList<MimeType>();
 		
 		//text
-		result.add(new MimeType("txt", "text", "plain"));
-		result.add(new MimeType("log", "text", "plain"));
-		result.add(new MimeType("cfg", "text", "plain"));
 		result.add(new MimeType("xml", "text", "xml"));
-		result.add(new MimeType("json", "text", "plain"));
 		result.add(new MimeType("htm", "text", "htm"));
 		result.add(new MimeType("html", "text", "html"));
 		result.add(new MimeType("shtml", "text", "html"));
 		result.add(new MimeType("css", "text", "css"));
 		result.add(new MimeType("rtf", "text", "rtf"));
 		result.add(new MimeType("rdf", "text", "rdf"));
-		result.add(new MimeType("java", "text", "plain"));
-		result.add(new MimeType("cs", "text", "plain"));
 		result.add(new MimeType("php", "text", "php"));
 		result.add(new MimeType("js", "text", "javascript"));
 		result.add(new MimeType("asp", "text", "asp"));
+		
+		//plain text
+		result.add(new MimeType("txt"));
+		result.add(new MimeType("log"));
+		result.add(new MimeType("cfg"));
+		result.add(new MimeType("java"));
+		result.add(new MimeType("cs"));
+		result.add(new MimeType("cpp"));
+		result.add(new MimeType("c"));
+		result.add(new MimeType("h"));
+		result.add(new MimeType("obj"));
 		
 		//applications
 		result.add(new MimeType("zip", "application", "zip"));
@@ -52,6 +57,7 @@ public class MimeTypeManager extends Manager<ArrayList<MimeType>>
 		result.add(new MimeType("pdf", "application", "pdf"));
 		result.add(new MimeType("dtd", "application", "xml-dtd"));
 		result.add(new MimeType("ps", "application", "postscript"));
+		result.add(new MimeType("json", "application", "json"));
 		
 		//images
 		result.add(new MimeType("png", "image", "png"));

@@ -16,11 +16,20 @@ public class MimeType
 	}
 	
 	/**
+	 * Creates a new, default MIME type.
+	 * @param extension the extension this type is for
+	 */
+	public MimeType(String extension)
+	{
+		this(extension, "text", "plain");
+	}
+	
+	/**
 	 * Creates a new, empty MIME type.
 	 */
 	public MimeType()
 	{
-		this("txt", "text", "plain");
+		this("txt");
 	}
 	
 	/**

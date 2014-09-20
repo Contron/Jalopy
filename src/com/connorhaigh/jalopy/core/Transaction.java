@@ -29,11 +29,15 @@ public class Transaction implements Runnable
 	@Override
 	public void run()
 	{
+		//streams
+		BufferedReader bufferedReader = null;
+		DataOutputStream dataOutputStream = null;
+		
 		try
 		{
 			//create wrapper streams
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-			DataOutputStream dataOutputStream = new DataOutputStream(this.socket.getOutputStream());
+			bufferedReader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+			dataOutputStream = new DataOutputStream(this.socket.getOutputStream());
 			
 			//header and dispatcher
 			RequestHeader requestHeader = null;
@@ -86,14 +90,23 @@ public class Transaction implements Runnable
 				if (this.server.getConfiguration().getLogErrors())
 					this.server.getExceptionLogger().logException(this.socket, requestHeader, exception);
 			}
-			
-			//close
-			bufferedReader.close();
-			dataOutputStream.close();
 		}
 		catch (Exception exception)
 		{
 			
+		}
+		finally
+		{
+			try
+			{
+				//close
+				bufferedReader.close();
+				dataOutputStream.close();
+			}
+			catch (IOException ioException)
+			{
+				
+			}
 		}
 	}
 	
