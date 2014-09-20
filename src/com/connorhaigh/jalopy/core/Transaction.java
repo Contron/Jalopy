@@ -76,8 +76,6 @@ public class Transaction implements Runnable
 			}
 			catch (Exception exception)
 			{
-				exception.printStackTrace();
-				
 				try
 				{
 					//generic error
