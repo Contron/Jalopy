@@ -34,6 +34,8 @@ public class Server implements Runnable
 		this.serverSocket = null;
 		
 		this.configuration = new Configuration();
+		this.clock = new Clock();
+		
 		this.domains = new ArrayList<Domain>();
 		this.mimeTypes = new ArrayList<MimeType>();
 		this.mappings = new ArrayList<Mapping>();
@@ -255,6 +257,15 @@ public class Server implements Runnable
 	}
 	
 	/**
+	 * Returns the clock for this server.
+	 * @return the clock
+	 */
+	public Clock getClock()
+	{
+		return this.clock;
+	}
+	
+	/**
 	 * Returns the list of domains for this server.
 	 * @return the list of domains
 	 */
@@ -305,6 +316,8 @@ public class Server implements Runnable
 	private ServerSocket serverSocket;
 	
 	private Configuration configuration;
+	private Clock clock;
+	
 	private ArrayList<Domain> domains;
 	private ArrayList<MimeType> mimeTypes;
 	private ArrayList<Mapping> mappings;

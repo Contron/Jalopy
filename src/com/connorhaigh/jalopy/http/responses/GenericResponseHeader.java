@@ -36,6 +36,7 @@ public class GenericResponseHeader extends ResponseHeader
 		result.append(this.coreValues());
 		result.append("Content-Type: " + this.content.getMimeType().getRealType() + Http.CARRIAGE_RETURN);
 		result.append("Content-Length: " + this.content.getLength() + Http.CARRIAGE_RETURN);
+		result.append("Last-Modified: " + this.getServer().getClock().format(this.content.getLastModified()) + Http.CARRIAGE_RETURN);
 		
 		//finalise
 		result.append(Http.CARRIAGE_RETURN);

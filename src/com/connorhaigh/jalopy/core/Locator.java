@@ -111,7 +111,7 @@ public class Locator
 	{
 		//set MIME and content type
 		MimeType mimeType = this.server.findMimeTypeFor(this.resource);
-		Content content = new Content(mimeType, this.resource.length());
+		Content content = new Content(mimeType, this.resource.length(), this.server.getClock().getZonedDateTime(this.resource.lastModified()));
 		
 		//set header
 		this.responseHeader = new GenericResponseHeader(this.server, StatusCode.OKAY, content);

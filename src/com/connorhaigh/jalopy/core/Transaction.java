@@ -76,10 +76,12 @@ public class Transaction implements Runnable
 			}
 			catch (Exception exception)
 			{
+				exception.printStackTrace();
+				
 				try
 				{
 					//generic error
-					dataOutputStream.write(PageGenerator.generatePageCompletelyFor(this.server, "Unexpected Error", exception.getMessage()).assemble().getBytes());
+					dataOutputStream.write(PageGenerator.generatePageCompletelyFor(this.server, "Server Error", exception.getMessage()).assemble().getBytes());
 				}
 				catch (IOException ioException)
 				{

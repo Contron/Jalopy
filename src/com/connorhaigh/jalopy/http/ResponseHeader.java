@@ -1,10 +1,7 @@
 package com.connorhaigh.jalopy.http;
 
-import java.time.LocalDateTime;
-
 import com.connorhaigh.jalopy.core.Server;
 import com.connorhaigh.jalopy.core.interfaces.Assemblable;
-import com.connorhaigh.jalopy.resources.DateTimeFormatters;
 
 public abstract class ResponseHeader implements Assemblable
 {
@@ -57,7 +54,7 @@ public abstract class ResponseHeader implements Assemblable
 		StringBuilder result = new StringBuilder();
 		
 		//header
-		result.append("Date: " + DateTimeFormatters.HTTP_TIME.format(LocalDateTime.now()) + Http.CARRIAGE_RETURN);
+		result.append("Date: " + this.server.getClock().format(this.server.getClock().getNow()) + Http.CARRIAGE_RETURN);
 		result.append("Server: " + this.getServer().getDetailedName() + Http.CARRIAGE_RETURN);
 		result.append("Connection: close" + Http.CARRIAGE_RETURN);
 		

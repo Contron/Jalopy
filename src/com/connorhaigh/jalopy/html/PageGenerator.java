@@ -63,7 +63,7 @@ public class PageGenerator
 		String html = PageGenerator.generateHtml(server, title, message);
 		
 		//generate page
-		Content content = new Content(MimeType.HTML, html.length());
+		Content content = new Content(MimeType.HTML, html.length(), server.getClock().getNow());
 		GenericResponseHeader genericResponseHeader = new GenericResponseHeader(server, StatusCode.OKAY, content);
 		Page page = new Page(genericResponseHeader, html);
 		
@@ -82,7 +82,7 @@ public class PageGenerator
 		String html = PageGenerator.generateHtmlFor(server, httpException);
 		
 		//generate page
-		Content content = new Content(MimeType.HTML, html.length());
+		Content content = new Content(MimeType.HTML, html.length(), server.getClock().getNow());
 		GenericResponseHeader genericResponseHeader = new GenericResponseHeader(server, httpException.getStatusCode(), content);
 		Page page = new Page(genericResponseHeader, html);
 		

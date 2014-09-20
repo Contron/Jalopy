@@ -6,11 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.Socket;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import com.connorhaigh.jalopy.core.Dispatcher;
 import com.connorhaigh.jalopy.exceptions.HttpException;
 import com.connorhaigh.jalopy.http.RequestHeader;
-import com.connorhaigh.jalopy.resources.DateTimeFormatters;
 
 public class Logger 
 {
@@ -147,7 +147,7 @@ public class Logger
 		try
 		{
 			//write message
-			String logMessage = String.format("[%s] %s", DateTimeFormatters.LOGGER.format(LocalDateTime.now()), message);
+			String logMessage = String.format("[%s] %s", Logger.FORMATTER.format(LocalDateTime.now()), message);
 			this.bufferedWriter.write(logMessage + System.lineSeparator());
 			this.bufferedWriter.flush();
 		}
@@ -156,6 +156,8 @@ public class Logger
 			
 		}
 	}
+	
+	public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("EEEE dd MMMM HH:mm:ss");
 	
 	private File root;
 	private File directory;
