@@ -55,7 +55,8 @@ public abstract class ResponseHeader implements Assemblable
 		
 		//header
 		result.append("Date: " + this.server.getClock().format(this.server.getClock().getNow()) + Http.CARRIAGE_RETURN);
-		result.append("Server: " + this.getServer().getDetailedName() + Http.CARRIAGE_RETURN);
+		result.append("Server: " + this.server.getDetailedName() + Http.CARRIAGE_RETURN);
+		result.append("Name: " + this.server.getConfiguration().getServerName() + Http.CARRIAGE_RETURN);
 		result.append("Connection: close" + Http.CARRIAGE_RETURN);
 		
 		return result.toString();

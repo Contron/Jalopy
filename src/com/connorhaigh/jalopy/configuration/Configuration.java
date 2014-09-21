@@ -14,7 +14,6 @@ public class Configuration
 		this.hostPort = 80;
 		this.logRequests = true;
 		this.logErrors = true;
-		this.ignoreWwwPrefix = true;
 		this.indexFiles = new ArrayList<String>(Arrays.asList("index.html", "index.htm", "index.txt"));
 	}
 	
@@ -55,15 +54,6 @@ public class Configuration
 	}
 	
 	/**
-	 * Returns if the WWW prefix for domains should be ignored for this configuration.
-	 * @return if the WWW prefix for domains should be ignored
-	 */
-	public boolean getIgnoreWwwPrefix()
-	{
-		return this.ignoreWwwPrefix;
-	}
-	
-	/**
 	 * Returns the list of index files to use for this configuration.
 	 * @return the list of index files to use
 	 */
@@ -76,6 +66,5 @@ public class Configuration
 	private int hostPort;
 	private boolean logRequests;
 	private boolean logErrors;
-	private boolean ignoreWwwPrefix;
 	private ArrayList<String> indexFiles;
 }

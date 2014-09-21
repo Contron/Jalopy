@@ -118,7 +118,7 @@ public class Server implements Runnable
 	public Domain findDomainFor(String host)
 	{
 		return this.domains.stream()
-			.filter(domain -> this.configuration.getIgnoreWwwPrefix() ? host.endsWith(domain.getHost()) : host.equals(domain.getHost()))
+			.filter(domain -> host.equals(domain.getHost()))
 			.findFirst()
 			.orElse(null);
 	}

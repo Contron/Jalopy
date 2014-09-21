@@ -82,6 +82,16 @@ public class RequestHeader
 		//clean method and host
 		this.method = this.method.toUpperCase();
 		this.host = this.host.toLowerCase();
+		
+		//find www prefix and port
+		int wwwIndex = this.host.indexOf(RequestHeader.WWW_PREFIX);
+		int portIndex = this.host.indexOf(RequestHeader.PORT_IDENTIFIER);
+		
+		//remove
+		if (wwwIndex != -1)
+			this.host = this.host.substring(wwwIndex + RequestHeader.WWW_PREFIX.length());
+		if (portIndex != -1)
+			this.host = this.host.substring(0, portIndex);
 	}
 	
 	/**
@@ -137,6 +147,9 @@ public class RequestHeader
 	{
 		return this.authorisation;
 	}
+	
+	public static final String WWW_PREFIX = "www.";
+	public static final String PORT_IDENTIFIER = ":";
 	
 	private String method;
 	private String path;
