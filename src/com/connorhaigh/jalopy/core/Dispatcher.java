@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import com.connorhaigh.jalopy.exceptions.HttpException;
 import com.connorhaigh.jalopy.exceptions.ServerException;
-import com.connorhaigh.jalopy.http.Content;
 import com.connorhaigh.jalopy.http.Request;
 import com.connorhaigh.jalopy.http.RequestHeader;
 import com.connorhaigh.jalopy.http.ResponseHeader;
@@ -29,7 +28,6 @@ public class Dispatcher
 		
 		this.mapping = null;
 		this.domain = null;
-		this.content = null;
 		
 		this.resource = null;
 		this.responseHeader = null;
@@ -50,7 +48,7 @@ public class Dispatcher
 		this.locateResource();
 		
 		//request and handler
-		Request request = new Request(this.requestHeader, this.domain, this.content, this.resource);
+		Request request = new Request(this.requestHeader, this.domain, this.resource);
 		Handler handler = this.mapping.createHandler(this.server, request, this.dataOutputStream);
 		
 		//head
@@ -104,6 +102,33 @@ public class Dispatcher
 	}
 	
 	/**
+	 * Returns the appropriate mapping for this dispatcher, or null.
+	 * @return the appropriate mapping, or null
+	 */
+	public Mapping getMapping()
+	{
+		return this.mapping;
+	}
+	
+	/**
+	 * Returns the matching domain for this dispatcher, or null.
+	 * @return the matching domain, or null
+	 */
+	public Domain getDomain()
+	{
+		return this.domain;
+	}
+	
+	/**
+	 * Returns the located resource for this dispatcher.
+	 * @return the located resource
+	 */
+	public File getResource()
+	{
+		return this.resource;
+	}
+	
+	/**
 	 * Returns the response header for this dispatcher.
 	 * @return the response header
 	 */
@@ -119,7 +144,6 @@ public class Dispatcher
 	
 	private Mapping mapping;
 	private Domain domain;
-	private Content content;
 	
 	private File resource;
 	private ResponseHeader responseHeader;

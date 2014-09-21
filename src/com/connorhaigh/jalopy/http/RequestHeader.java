@@ -26,7 +26,7 @@ public class RequestHeader
 	 * Gathers this request header's contents from an input stream.
 	 * @param bufferedReader the input stream to read
 	 * @throws IOException if the stream could not be read
-	 * throws HttpException if a HTTP related exception occurs
+	 * @throws HttpException if a HTTP related exception occurs
 	 */
 	public void gather(BufferedReader bufferedReader) throws IOException, HttpException
 	{

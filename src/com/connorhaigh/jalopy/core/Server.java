@@ -219,7 +219,7 @@ public class Server implements Runnable
 		//validate domain directories exist
 		for (Domain domain : this.domains)
 			if (!domain.getDirectory().exists())
-				throw new ServerException("Directory for domain '" + domain.getName() + "' does not exist: " + domain.getDirectory());
+				throw new ServerException("Directory for domain '" + domain.getName() + "' does not exist at '" + domain.getDirectory() + "'");
 	}
 	
 	/**

@@ -2,6 +2,8 @@ package com.connorhaigh.jalopy.core;
 
 import java.io.File;
 
+import com.connorhaigh.jalopy.http.Http;
+
 public class Domain 
 {
 	/**
@@ -42,7 +44,7 @@ public class Domain
 	 */
 	public String resolvePathToRelative(File file)
 	{
-		return file.getAbsolutePath().substring(this.directory.getAbsolutePath().length()).replace("\\", "/");
+		return (file.getAbsolutePath().substring(this.directory.getAbsolutePath().length()).replace("\\", "/") + Http.SLASH);
 	}
 	
 	/**

@@ -62,8 +62,7 @@ public class Locator
 			return false;
 		
 		//redirect
-		String location = (this.domain.resolvePathToRelative(this.resource) + Http.SLASH);
-		this.responseHeader = new RedirectResponseHeader(this.server, StatusCode.FOUND, location);
+		this.responseHeader = new RedirectResponseHeader(this.server, StatusCode.FOUND, this.domain.resolvePathToRelative(this.resource));
 
 		return true;
 	}
@@ -110,11 +109,29 @@ public class Locator
 	private void prepareResource()
 	{
 		//set MIME and content type
-		MimeType mimeType = this.server.findMimeTypeFor(this.resource);
-		Content content = new Content(mimeType, this.resource.length(), this.server.getClock().getZonedDateTime(this.resource.lastModified()));
+		this.mimeType = this.server.findMimeTypeFor(this.resource);
+		this.content = new Content(this.mimeType, this.resource.length(), this.server.getClock().getZonedDateTime(this.resource.lastModified()));
 		
 		//set header
-		this.responseHeader = new GenericResponseHeader(this.server, StatusCode.OKAY, content);
+		this.responseHeader = new GenericResponseHeader(this.server, StatusCode.OKAY, this.content);
+	}
+	
+	/**
+	 * Returns the matching MIME type for the located resource for this locator, or null.
+	 * @return the matching MIME type, or null
+	 */
+	public MimeType getMimeType()
+	{
+		return this.mimeType;
+	}
+	
+	/**
+	 * Returns the matching content definition for the located resource for this locator, or null.
+	 * @return the matching content definition, or null
+	 */
+	public Content getContent()
+	{
+		return this.content;
 	}
 	
 	/**
@@ -138,6 +155,9 @@ public class Locator
 	private Server server;
 	private Domain domain;
 	private String path;
+	
+	private MimeType mimeType;
+	private Content content;
 	
 	private File resource;
 	private ResponseHeader responseHeader;

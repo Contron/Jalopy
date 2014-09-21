@@ -12,11 +12,10 @@ public class Request
 	 * @param domain the domain for the request
 	 * @param resource the specific resource of the request
 	 */
-	public Request(RequestHeader requestHeader, Domain domain, Content content, File resource)
+	public Request(RequestHeader requestHeader, Domain domain, File resource)
 	{
 		this.requestHeader = requestHeader;
 		this.domain = domain;
-		this.content = content;
 		this.resource = resource;
 	}
 	
@@ -39,15 +38,6 @@ public class Request
 	}
 	
 	/**
-	 * Returns the content definition for this request.
-	 * @return the content definition
-	 */
-	public Content getContent()
-	{
-		return this.content;
-	}
-	
-	/**
 	 * Returns the requested resource for this request.
 	 * @return the requested resource
 	 */
@@ -58,6 +48,5 @@ public class Request
 	
 	private RequestHeader requestHeader;
 	private Domain domain;
-	private Content content;
 	private File resource;
 }
