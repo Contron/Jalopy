@@ -16,7 +16,7 @@ public class StatusCode
 	}
 	
 	/**
-	 * Returns the actual status code represented by this object.
+	 * Returns the actual status code represented.
 	 * @return the actual status code
 	 */
 	public String getRealCode()

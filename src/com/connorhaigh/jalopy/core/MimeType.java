@@ -33,7 +33,7 @@ public class MimeType
 	}
 	
 	/**
-	 * Returns the actual MIME type represented by this object.
+	 * Returns the actual MIME type represented.
 	 * @return the actual MIME type
 	 */
 	public String getRealType()
